@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> [ Soymilk ]</title>
+  
+<link rel="shortcut icon" href="/favicon/favicon.ico">
+
+<link rel="stylesheet" href="/lib/highlight/monokai-sublime.css">
+
+<link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+
+<link rel="stylesheet" href="/css/milk.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+  <div class="milk-header">
+     
+
+  <nav class="header-nav">
+     
+    <ul class="nav-menu">
+      
+        <li id="Home">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          <a href="/ ">Home</a>
+        </li>
+      
+        <li id="Archives">
+          <i class="fa fa-archive" aria-hidden="true"></i>
+          <a href="/archives ">Archives</a>
+        </li>
+      
+        <li id="About">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <a href="/about ">About</a>
+        </li>
+      
+    </ul>
+    
+    
+      <span class="nav-date">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        <span id="date"></span>
+      </span>
+    
+    
+    
+      <span class="nav-system" id="nav-system"></span>
+    
+    
+    <span class="nav-access">
+      <i class="fa fa-universal-access" id="nav-access"></i>
+      <i class="fa fa-angle-down"></i>
+      <div class="dropdown-content" id="dropdown-content">
+        <ul class="social">
+          
+            <li>
+              <a target="_blank" rel="noopener" href="https://github.com/MRsoymilk">
+                <i class="fa fa-github-alt" aria-hidden="true"></i>
+              </a>
+            </li>
+          
+            <li>
+              <a href="mailto:codermrsoymilk@gmail.com">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </a>
+            </li>
+          
+        </ul>
+        <ul>
+          <li><span>Power by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span></li>
+        </ul>
+      </div>
+    </span>
+  </nav>
+ 
+  </div>
+  <div class="milk-body">
+    
+<div class="draggable-toc">
+  <div class="toc-title"></div>
+  <p>process: <span>0</span></p>
+  <div class="progress-container">
+    <div class="progress-bar" id="bar"></div>
+  </div>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E6%9D%A1%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%A7%81%E6%9C%89%E9%93%BE"><span class="toc-text">搭建第一条以太坊私有链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85geth%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">安装geth客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8Ego-ethereum%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA"><span class="toc-text">从go-ethereum源码构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A7%81%E6%9C%89%E9%93%BE%E4%BF%A1%E6%81%AF"><span class="toc-text">配置私有链信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1-%E5%88%9B%E5%BB%BA%E8%B4%A6%E6%88%B7"><span class="toc-text">step1.创建账户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MetaMask%E8%B4%A6%E6%88%B71%EF%BC%9AgethGenesis"><span class="toc-text">MetaMask账户1：gethGenesis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MetaMask%E8%B4%A6%E6%88%B72%EF%BC%9AgethAlice"><span class="toc-text">MetaMask账户2：gethAlice</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2-%E9%85%8D%E7%BD%AEgenesis-json"><span class="toc-text">step2.配置genesis.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">step3.初始化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8geth"><span class="toc-text">启动geth</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#console%E4%BD%BF%E7%94%A8web3js%E4%B8%8E%E4%BB%A5%E5%A4%AA%E5%9D%8A%E4%BA%A4%E4%BA%92"><span class="toc-text">console使用web3js与以太坊交互</span></a></li></ol></li></ol></li></ol>
+</div>
+
+<div class="post-content" id="post-content">
+  <div id="top"></div>
+  <div class="post">
+    
+    <div class="content-categories">
+      
+      <i class="fa fa-location-arrow"></i>
+      <ul>
+        <li>categories</li>
+        
+      </ul>
+    
+    </div>
+    <hr>
+    
+    <h1 id="搭建第一条以太坊私有链"><a href="#搭建第一条以太坊私有链" class="headerlink" title="搭建第一条以太坊私有链"></a>搭建第一条以太坊私有链</h1><blockquote>
+<p>搭建环境</p>
+</blockquote>
+<h2 id="安装geth客户端"><a href="#安装geth客户端" class="headerlink" title="安装geth客户端"></a>安装geth客户端</h2><h3 id="从go-ethereum源码构建"><a href="#从go-ethereum源码构建" class="headerlink" title="从go-ethereum源码构建"></a>从<a target="_blank" rel="noopener" href="https://github.com/ethereum/go-ethereum">go-ethereum</a>源码构建</h3><pre><code class="bash">git clone https://github.com/ethereum/go-ethereum.git
+cd go-ethereum
+make geth
+</code></pre>
+<p>完成构建后查看geth版本</p>
+<p><code>./build/bin/geth version</code></p>
+<p>出现相应的版本信息即构建geth成功</p>
+<h2 id="配置私有链信息"><a href="#配置私有链信息" class="headerlink" title="配置私有链信息"></a>配置私有链信息</h2><h3 id="step1-创建账户"><a href="#step1-创建账户" class="headerlink" title="step1.创建账户"></a>step1.创建账户</h3><h4 id="MetaMask账户1：gethGenesis"><a href="#MetaMask账户1：gethGenesis" class="headerlink" title="MetaMask账户1：gethGenesis"></a>MetaMask账户1：gethGenesis</h4><blockquote>
+<p>地址</p>
+<p>0xa0CD0e9A12FD2331e6716B292994071f934759C0</p>
+<p>私钥</p>
+<p>da5ac2529bf11911865b8dce55549fa4afd0b00ffb21b6e7b701011e430a065b</p>
+<p>密码</p>
+<p>chainbridge</p>
+<p>私密备份密语</p>
+<p>upgrade must army glove humor wasp giant curve state core clock tomato</p>
+</blockquote>
+<h4 id="MetaMask账户2：gethAlice"><a href="#MetaMask账户2：gethAlice" class="headerlink" title="MetaMask账户2：gethAlice"></a>MetaMask账户2：gethAlice</h4><blockquote>
+<p>地址</p>
+<p>0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775</p>
+<p>私钥</p>
+<p>a2e77846ce777ee833179b9053cd826592e694e4fda73db412b6ac3735e4e620</p>
+<p>密码</p>
+<p>chainbridge</p>
+</blockquote>
+<h3 id="step2-配置genesis-json"><a href="#step2-配置genesis-json" class="headerlink" title="step2.配置genesis.json"></a>step2.配置genesis.json</h3><pre><code class="json">&#123;
+    &quot;config&quot;: &#123;
+        &quot;chainId&quot;: 111
+    &#125;,
+    &quot;difficulty&quot;: &quot;2000&quot;,
+    &quot;gasLimit&quot;: &quot;2100000&quot;,
+    &quot;alloc&quot;: &#123;
+        &quot;0xa0CD0e9A12FD2331e6716B292994071f934759C0&quot;: &#123;
+            &quot;balance&quot;: &quot;1000000000000000000000&quot;
+        &#125;,
+        &quot;0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775&quot;: &#123;
+            &quot;balance&quot;: &quot;500000000000000000000&quot;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="step3-初始化"><a href="#step3-初始化" class="headerlink" title="step3.初始化"></a>step3.初始化</h3><p>cd 进入自定义data路径，并创建genesis.json </p>
+<p><code>geth --datadir . init genesis.json</code></p>
+<pre><code class="json">INFO [02-17|18:36:29.431] Maximum peer count                       ETH=50 LES=0 total=50
+INFO [02-17|18:36:29.431] Smartcard socket not found, disabling    err=&quot;stat /run/pcscd/pcscd.comm: no such file or directory&quot;
+INFO [02-17|18:36:29.433] Set global gas cap                       cap=25000000
+INFO [02-17|18:36:29.433] Allocated cache and file handles         database=/home/rjman/Project/BlockChain/Ethereum/gethData/data/geth/chaindata cache=16.00MiB handles=16
+INFO [02-17|18:36:29.447] Writing custom genesis block 
+INFO [02-17|18:36:29.447] Persisted trie from memory database      nodes=4 size=478.00B time=&quot;64.999µs&quot; gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [02-17|18:36:29.448] Successfully wrote genesis state         database=chaindata hash=&quot;e9a468…1eb27e&quot;
+INFO [02-17|18:36:29.448] Allocated cache and file handles         database=/home/rjman/Project/BlockChain/Ethereum/gethData/data/geth/lightchaindata cache=16.00MiB handles=16
+INFO [02-17|18:36:29.456] Writing custom genesis block 
+INFO [02-17|18:36:29.457] Persisted trie from memory database      nodes=4 size=478.00B time=&quot;77.114µs&quot; gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [02-17|18:36:29.457] Successfully wrote genesis state         database=lightchaindata hash=&quot;e9a468…1eb27e&quot;
+</code></pre>
+<h2 id="启动geth"><a href="#启动geth" class="headerlink" title="启动geth"></a>启动geth</h2><p>本地启动私有链</p>
+<p><code>geth --datadir . --networkid 111</code></p>
+<pre><code class="json">......
+INFO [02-16|23:01:59.983] Started P2P networking                   self=enode://11fb58dc2f7f3e00007da20b9746ba58eead0739babda69bdc4fad0f59763d7fc7b7454fbf218ccc00d5385122da96c0d6c9e4ed2e50eaf17b304cff3f18077f@127.0.0.1:30303
+......
+</code></pre>
+<p>Or 使用console进行交互、打印运行日志到json文件、开启8545端口（默认）给rpc</p>
+<p><code>geth --datadir . --networkid 111 --rpc console 2&gt;output.json</code></p>
+<p>Or 允许</p>
+<p><code>geth --datadir . --networkid 111 --rpc --rpcapi eth,web3,personal --allow-insecure-unlock console 2&gt;output.json </code></p>
+<h3 id="console使用web3js与以太坊交互"><a href="#console使用web3js与以太坊交互" class="headerlink" title="console使用web3js与以太坊交互"></a>console使用web3js与以太坊交互</h3><p>​    console输入<code>web3</code>查询可交互对象的命令（exit退出console）</p>
+<ol>
+<li><p>查询余额</p>
+<ul>
+<li>eth.getBalance(“0xa0CD0e9A12FD2331e6716B292994071f934759C0”)</li>
+<li>eth.getBalance(“0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775”)</li>
+<li>web3.fromWei(eth.getBalance(“0xa0CD0e9A12FD2331e6716B292994071f934759C0”),’ether’)</li>
+<li>web3.fromWei(eth.getBalance(“0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775”),’ether’)</li>
+</ul>
+</li>
+<li><p>查询账户</p>
+<ul>
+<li>eth.accounts</li>
+</ul>
+</li>
+<li><p>新建账户</p>
+<ul>
+<li><p>personal.newAccount()</p>
+<ul>
+<li><p>密码: 111</p>
+</li>
+<li><p>地址: 0xf106b7c8eaddfbff34ce5983ce55ffa31089ead3</p>
+</li>
+<li><p>账户2</p>
+</li>
+<li><p>密码: 111</p>
+</li>
+<li><p>地址: 0x03a68491408465428a4464d1ca3ad7b878becbc9</p>
+<blockquote>
+<p>本地keystore文件夹生成相应json文件</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>eth.getBalance(eth.accounts[0])</p>
+</li>
+</ul>
+</li>
+<li><p>尝试转账</p>
+<ul>
+<li><p>解锁账户</p>
+<ul>
+<li>personal.unlockAccount(eth.accounts[0])</li>
+</ul>
+</li>
+<li><p>eth.sendTransaction(from: eth.accounts[0], to: “”, value: 1000)</p>
+<blockquote>
+<p>当前账户没有余额</p>
+<ol>
+<li>（可选）personal.imporRawkey导入metamask账户的原始私钥到当前钱包</li>
+<li>mint产出ether</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>挖矿产出ether</p>
+<ul>
+<li><p>miner.start(1)</p>
+</li>
+<li><p>miner.stop</p>
+</li>
+<li><p>eth.blockNumber</p>
+</li>
+</ul>
+</li>
+<li><p>查询余额</p>
+<ul>
+<li>web3.fromWei(eth.getBalance(eth.accounts[0]), ‘ether’)</li>
+</ul>
+</li>
+<li><p>转账</p>
+<ul>
+<li>eth.sendTransaction({from: eth.accounts[0], to: “0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775”, value: web3.toWei(50, ‘ether’)})</li>
+<li>eth.sendTransaction({from: eth.accounts[0], to:  eth.accounts[1], value: web3.toWei(15, ‘ether’)})</li>
+<li></li>
+<li>web3.fromWei(eth.getBalance(“0xC1593919F406ea0b2e39a014BE28dcEb9BA1e775”),’ether’)</li>
+<li>web3.fromWei(eth.getBalance(eth.accounts[0]), ‘ether’)</li>
+<li>web3.fromWei(eth.getBalance(eth.accounts[1]), ‘ether’)</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>account unlock with HTTP access is forbidden</p>
+<p>问题原因：新版本geth，出于安全考虑，默认禁止了HTTP通道解锁账户</p>
+<p>解决方法：允许eth,web3,personal不安全的解锁</p>
+<p>geth –rpc –rpcapi eth,web3,personal –allow-insecure-unlock</p>
+</blockquote>
+
+    
+    <hr>
+    <div class="content-tags">
+      
+      <i class="fa fa-tags"></i>
+      <ul>
+        
+      </ul>
+    
+    </div>
+    
+     
+<div class="comment-tabs" id="comment-tabs">
+  comment:
+  <ul>
+    
+      <li><a href="#Valine">Valine</a></li>
+    
+    
+      <li><a href="#LiveRe">LiveRe</a></li>
+    
+    
+      <li><a href="#ChangYan">ChangYan</a></li>
+    
+  </ul>
+  
+  
+    <div id="ChangYan">
+      <!--PC和WAP自适应版-->
+      <div id="SOHUCS" ></div> 
+      <script type="text/javascript"> 
+      (function(){ 
+      var appid = 'cyuGH4lBk'; 
+      var conf = 'ae32d85e4ca99348209aedfd3ae01478'; 
+      var width = window.innerWidth || document.documentElement.clientWidth; 
+      if (width < 960) {
+      var head = document.getElementsByTagName('head')[0]||document.head||document.documentElement;
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.charset = 'utf-8';
+      script.id = 'changyan_mobile_js';
+      script.src = 'https://cy-cdn.kuaizhan.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf;
+      head.appendChild(script);
+      } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://cy-cdn.kuaizhan.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+      </script>
+    </div>
+   
+  
+  
+    <div id="LiveRe">
+      
+        <!-- LiveRe City install code -->
+        <div id="lv-container" data-id="city" data-uid="MTAyMC80NjA4MS8yMjU5Mg==">
+          <script type="text/javascript">
+            (function(d, s) {
+              var j, e = d.getElementsByTagName(s)[0];
+              if (typeof LivereTower === 'function') { return; }
+              j = d.createElement(s);
+              j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+              j.async = true;
+              e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+          </script>
+          <noscript>Please activate JavaScript for write a comment in LiveRe</noscript>
+          </div>
+          <!-- completed City install code -->
+        
+    </div>
+  
+  
+  
+    <div id="Valine">
+      <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+      <div id="vcomments"></div>
+      <script>
+        new Valine({
+          el: '#vcomments',
+          appId: '5bHFwYPW2iHWCiV7WmNRSenk-gzGzoHsz',
+          appKey: '2q4UgVDTmeJf9Phe8VbnNKyC',
+          avatar: 'monsterid',
+          enableQQ: true
+        })
+      </script>
+    </div>
+   
+</div>
+
+  </div>
+</div>
+ 
+<div>
+  <button id="scroll2top">back to top</button>
+</div>
+  </div>
+  
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/jquery/jquery-ui.min.js"></script>
+
+
+<script src="/lib/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script src="/lib/highlight/highlight.pack.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+<script src="/js/milk.js"></script>
+
+</body>
+</html>
